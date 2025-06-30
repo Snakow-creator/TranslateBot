@@ -24,8 +24,8 @@ class Translate(StatesGroup):
 @router.message(CommandStart())
 async def start(message: Message):
     await message.answer(
-        f"Приветствую {message.from_user.first_name}!"
-        f"\nЭто бот переводчик Расл!"
+        f"Приветствую <b>{message.from_user.first_name}</b>!"
+        f"\nЭто бот переводчик Расл👨"
         f"\nЯ переводчик английского!"
         f"\n\nНачать взаимодействие с ботом нажмите кнопку ниже⬇️",
         reply_markup=kb.main,

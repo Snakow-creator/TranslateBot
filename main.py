@@ -1,17 +1,17 @@
 import asyncio
 
 from aiogram import Bot, Dispatcher
-from aiogram.enums.parse_mode import ParseMode
-from aiogram.client.bot import DefaultBotProperties
 from apps import handlers, callbacks
-from secret.config import TOKEN
+from secret.config import TOKEN, BOT_PROPERTIES
+from middlewares.check_subscribe import CheckSubscribtion
 
-bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+bot = Bot(token=TOKEN, default=BOT_PROPERTIES)
 dp = Dispatcher()
 
 
 async def main():
     dp.include_routers(handlers.router, callbacks.router)
+    dp.message.middleware(CheckSubscribtion())
     await dp.start_polling(bot)
 
 

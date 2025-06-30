@@ -8,12 +8,16 @@ main = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="Простой перевод🇺🇸"),
             KeyboardButton(text="Перевод фраз🦜"),
-        ],
-        [KeyboardButton(text="Информацияℹ️")],
+        ]
     ],
     resize_keyboard=True,
     input_field_placeholder="Нажмите на кнопку ниже.",
 )
+
+sub_channel = InlineKeyboardMarkup(
+        inline_keyboard=[[InlineKeyboardButton(
+            text="Подписаться на канал", url="https://t.me/obotov")]]
+    )
 
 
 def translate_cancel(action):
@@ -30,3 +34,5 @@ def repeat_keyboard(action):
     button = [[InlineKeyboardButton(text=text, callback_data=f"{action}_repeat")]]
     keyboard = InlineKeyboardMarkup(inline_keyboard=button)
     return keyboard
+
+
