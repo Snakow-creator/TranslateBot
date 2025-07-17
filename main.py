@@ -11,7 +11,6 @@ dp = Dispatcher()
 
 async def main():
     dp.include_routers(handlers.router, callbacks.router)
-    dp.message.middleware(CheckSubscribtion())
     await dp.start_polling(bot)
 
 

@@ -9,7 +9,9 @@ from apps.functions import win, win
 from apps.functions import win_phrase, check_phrase
 from base.lite_translate import translate
 from base.phrase_translate import ph_translate
+
 import random
+import time
 
 router = Router()
 word = {}
@@ -30,6 +32,9 @@ async def start(message: Message):
         f"\n\nНачать взаимодействие с ботом нажмите кнопку ниже⬇️",
         reply_markup=kb.main,
     )
+    time.sleep(2)
+    await message.answer("Также вы можете подписаться на наш канал, чтобы следить за новыми обновлениями.",
+                          reply_markup=kb.sub_channel, disable_web_page_preview=True)
 
 
 @router.message(F.text == "Простой перевод🇺🇸")
